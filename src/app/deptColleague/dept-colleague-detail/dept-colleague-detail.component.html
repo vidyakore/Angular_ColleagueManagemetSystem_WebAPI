@@ -1,0 +1,24 @@
+<a href="DeptColleagues/Add" class="btn btn-info" role="button">Create New</a>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>DeptColleague Id</th>
+        <th>Colleague Id</th>
+        <th>Department Id</th>
+        
+        <!-- <th>Created</th>
+        <th>Action</th> -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let d of colService.listDeptColleague">
+
+        <td>{{ d.id }}</td>
+        <td>{{ d.colleagueId }}</td>
+        <td>{{ d.departmentId }}</td>
+
+      </tr>
+         
+    </tbody>
+  </table>

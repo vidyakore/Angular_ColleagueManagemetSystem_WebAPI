@@ -1,0 +1,28 @@
+<!-- <p>edit-colleague works!</p> -->
+<form [formGroup] = "editColleagueForm" (ngSubmit)="updateColleague()">
+    <!-- <input type="hidden" name="id" [value]="selectedColleague.colleagueId"> -->
+
+    <div class="form-group col-md-5">
+      <label for="colleagueName">Enter Colleague Name</label>
+      <input type="text" class="form-control" id="colleagueName" placeholder="Enter Name" formControlName="colleagueName" required>
+    </div>
+    <div class="col-md-3">
+        <label  class="control-label">AddressId</label>
+        <select  friendly-name="Model" class="col-md-6 form-control"  formControlName="addressId" >
+            <option>Select</option>
+            <!-- <option *ngIf="option == Select"> <app-address-form></app-address-form> </option> -->
+            <option *ngFor="let add of colService.listAddress">{{add.addressId}}</option>
+        </select>
+
+        <div class="form-group" col->
+          <label for="created">Date and Time</label>
+          <input type="datetime-local" class="form-control" name="created" placeholder="Enter current date" required formControlName="created">
+      </div>
+
+
+    </div> 
+
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>

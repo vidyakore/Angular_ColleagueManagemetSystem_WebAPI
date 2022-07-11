@@ -1,0 +1,37 @@
+<a href="Colleagues/add" class="btn btn-info" role="button">Create New</a>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Colleague Id</th>
+        <th>Address Id</th>
+        <th>Colleague Name</th>
+        <th>Created</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let coll of colService.listColleague">
+
+        <td>{{ coll.colleagueId }}</td>
+        <td>{{ coll.addressId }}</td>
+        <td>{{ coll.colleagueName }}</td>
+        <td>{{ coll.created | date: 'yyyy-MM-dd' }}</td>
+        
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Action
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <!-- <a class="dropdown-item" href="#" (click)="populateAddress(add)">Edit</a> -->
+              <a class="dropdown-item" href="Colleagues/edit/{{coll.colleagueId}}">Edit</a>
+              <a class="dropdown-item" href="#" (click)="deleteColleague(coll.colleagueId)">delete</a>
+              
+            </div>
+          </div>
+        </td>
+      </tr>
+         
+    </tbody>
+  </table>

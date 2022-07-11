@@ -1,0 +1,41 @@
+<form [formGroup] = "ColleagueForm" (ngSubmit)="saveColleague()">
+    <!-- <input type="hidden" name="id" [value]="selectedColleague.colleagueId"> -->
+
+    <div class="form-group col-md-5">
+      <label for="colleagueName">Enter Colleague Name</label>
+      <input type="text" class="form-control" id="colleagueName" placeholder="Enter Name" formControlName="colleagueName" required>
+    </div>
+    <div class="col-md-3">
+        <label  class="control-label">AddressId</label>
+        <select id="addressId" name="modelAddress" class="col-md-6 form-control"  formControlName="addressId" >
+            <option ng-selected="none" name="createNew" value=0>None Of these</option>
+            <option *ngFor="let add of colService.listAddress">{{add.addressId}}</option>
+        </select>
+          
+          <ng-Container #myDiv id="address" class="col-md-8" *ngIf="ColleagueForm.get('addressId').value== 0" >
+            <app-add-address-in-colleague 
+            (sendAddLine1)="getAddLine1FromColleague($event)" 
+            (sendAddLine2)="getAddLine2FromColleague($event)"
+            (city)="getCityFromColleague($event)"
+            (zipcode)="getZipcodeFromColleague($event)"
+            (state)="getStateFromColleague($event)"
+            (country)="getCountryFromColleague($event)"
+            (dateTime)="getDatetimeFromColleague($event)"
+            >
+
+            </app-add-address-in-colleague>
+          </ng-Container>
+          
+
+        <div class="form-group col-md-7">
+          <label for="created">Date and Time For Colleague</label>
+          <input type="datetime-local" class="form-control" name="created" placeholder="Enter current date" required formControlName="created">
+        </div>
+
+
+    </div> 
+
+    <div class="col-md-2">
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </form>

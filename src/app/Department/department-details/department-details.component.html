@@ -1,0 +1,36 @@
+<a href="Departments/add" class="btn btn-info" role="button">Create New</a>
+
+<table class="table table-hover">
+    <thead class="thead-dark">
+      <tr>
+        <th>Department Id</th>
+        <th>Department Name</th>
+        <th>Created</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dept of colService.listDepartment">
+         
+    
+        <td>{{ dept.departmentId }}</td>
+        <td>{{ dept.departmentName }}</td>
+        <td>{{ dept.created | date: 'yyyy-MM-dd' }}</td>
+        
+        <td>
+          <div class="dropdown">
+            <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              Action
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <!-- <a class="dropdown-item" href="#" (click)="populateAddress(add)">Edit</a> -->
+              <a class="dropdown-item" href="Departments/edit/{{dept.departmentId}}">Edit</a>
+              <a class="dropdown-item" href="#" (click)="deleteDepartment(dept.departmentId)">delete</a>
+              
+            </div>
+          </div>
+        </td>
+      </tr>
+         
+    </tbody>
+  </table>
