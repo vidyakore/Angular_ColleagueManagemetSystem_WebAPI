@@ -13,7 +13,7 @@ export class AddAddressInColleagueComponent implements OnInit {
   addressForm = new FormGroup({
     // colleagueId: new FormControl(''),
     addLine1: new FormControl(''),
-    addLine2: new FormControl(),
+    addLine2: new FormControl(''),
     city: new FormControl(''),
     zipcode: new FormControl(''),
     state: new FormControl(''),
@@ -22,53 +22,53 @@ export class AddAddressInColleagueComponent implements OnInit {
   });
 
   @Output()
-  sendAddLine1: EventEmitter<any> = new EventEmitter();
+  addLine1: EventEmitter<string> = new EventEmitter();
 
   @Output()
-  sendAddLine2: EventEmitter<any> = new EventEmitter();
+  addLine2: EventEmitter<string> = new EventEmitter();
 
   @Output()
-  city: EventEmitter<any> = new EventEmitter();
+  city: EventEmitter<string> = new EventEmitter();
 
   @Output()
-  zipcode: EventEmitter<any> = new EventEmitter();
+  zipcode: EventEmitter<string> = new EventEmitter();
 
   @Output()
-  state: EventEmitter<any> = new EventEmitter();
+  state: EventEmitter<string> = new EventEmitter();
 
   @Output()
-  country: EventEmitter<any> = new EventEmitter();
+  country: EventEmitter<string> = new EventEmitter();
 
   @Output()
-  dateTime: EventEmitter<any> = new EventEmitter();
+  created: EventEmitter<any> = new EventEmitter();
 
 
-  sendAddLine1ToColleague(temp:any){
-  this.sendAddLine1.emit(temp);
+  sendAddLine1ToColleague(temp:string){
+  this.addLine1.emit(temp);
   }
 
-  sendAddLine2ToColleague(temp:any){
-  this.sendAddLine2.emit(temp);
+  sendAddLine2ToColleague(temp:string){
+  this.addLine2.emit(temp);
   }
 
-  sendCityToColleague(temp:any){
+  sendCityToColleague(temp:string){
   this.city.emit(temp);
   }
 
-  sendZipcodeToColleague(temp:any){
+  sendZipcodeToColleague(temp:string){
     this.zipcode.emit(temp);
     }
 
-  sendStateToColleague(temp:any)
+  sendStateToColleague(temp:string)
   {
     this.state.emit(temp);
   }
-  sendCountryToColleague(temp:any){
+  sendCountryToColleague(temp:string){
     this.country.emit(temp);
     }
 
   sendDatetimeToColleague(temp:any){
-    this.dateTime.emit(temp);
+    this.created.emit(temp);
     }
 
 

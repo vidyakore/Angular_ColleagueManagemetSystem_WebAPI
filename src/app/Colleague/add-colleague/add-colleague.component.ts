@@ -23,7 +23,7 @@ export class AddColleagueComponent implements OnInit {
     // colleagueId: new FormControl(''),
     colleagueName: new FormControl(''),
     addressId: new FormControl(),
-    created: new FormControl( '' ),
+    created: new FormControl(''),
     //changed
     addnew: new FormControl('')
   });
@@ -55,7 +55,7 @@ export class AddColleagueComponent implements OnInit {
   }
 
   getDatetimeFromColleague(temp: any): void{
-    this.newAdd.country = temp;
+    this.newAdd.created = temp;
   }
 
   ngOnInit(): void {
@@ -81,13 +81,25 @@ export class AddColleagueComponent implements OnInit {
     console.log(this.ColleagueForm);
     if(this.ColleagueForm.get('addressId').value == 0)
     {
-      this.colService.saveAddress(this.newAdd)
-      console.log(this.colService.addressData.next(this.newAdd));
-      console.log(this.newAdd.addressId)
+      this.colService.saveAddress2(this.newAdd).subscribe(result=>
+        {console.log(result);})
+        console.log("addressId",this.newAdd.addressId);
+      console.log(this.colService.listAddress)
+      // console.log(this.colService.addressData.next(this.newAdd));
+      // console.log(this.newAdd.addressId)
     }  
-    this.colService.saveColleague(this.ColleagueForm.value).subscribe(result=>{
+    else
+    {
+      this.colService.saveColleague(this.ColleagueForm.value).subscribe(result=>{
       console.log(result);
-    });
+      });
+    }
+    console.log("addressId using listaddress",this.colService.listAddress[-1].addressId);
+    // this.colService.getAddress().subscribe(data=>{
+    //   this.colService.listAddress=data;
+    //   console.log("addressId recent",data[data.length].addressId);
+    // });
+      
   }
 
 }

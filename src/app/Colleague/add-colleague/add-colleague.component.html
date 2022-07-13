@@ -14,13 +14,13 @@
           
           <ng-Container #myDiv id="address" class="col-md-8" *ngIf="ColleagueForm.get('addressId').value== 0" >
             <app-add-address-in-colleague 
-            (sendAddLine1)="getAddLine1FromColleague($event)" 
-            (sendAddLine2)="getAddLine2FromColleague($event)"
+            (addLine1)="getAddLine1FromColleague($event)" 
+            (addLine2)="getAddLine2FromColleague($event)"
             (city)="getCityFromColleague($event)"
             (zipcode)="getZipcodeFromColleague($event)"
             (state)="getStateFromColleague($event)"
             (country)="getCountryFromColleague($event)"
-            (dateTime)="getDatetimeFromColleague($event)"
+            (created)="getDatetimeFromColleague($event)"
             >
 
             </app-add-address-in-colleague>

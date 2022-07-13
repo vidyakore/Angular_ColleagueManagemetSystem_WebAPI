@@ -32,6 +32,13 @@ export class ColleagueService {
     return this.myhttp.post(this.addressUrl,data);
   }
 
+  saveAddress2(data:any)
+  {
+    const postData = {AddLine1:data.addLine1, AddLine2:data.addLine2,State:data.state,City:data.city,Zipcode:data.zipcode,Country:data.country,created: data.created };
+    console.log(postData);
+    return this.myhttp.post(this.addressUrl,postData);
+  }
+
   getAddressById(id:number)
   {
     return this.myhttp.get(`${this.addressUrl}/${id}`)
@@ -108,7 +115,7 @@ export class ColleagueService {
     return this.myhttp.get(`${this.departmentUrl}/${id}`)
   }
 
-  UpdateDepartmentData(id:Int16Array,data:any)
+  UpdateDepartmentData(id:number,data:any)
   {
     return this.myhttp.put(`${this.departmentUrl}/${id}`,data);
   }
